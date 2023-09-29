@@ -13,15 +13,15 @@ function App() {
       <h1>TODO List</h1>
       <ul>
         {todoList.map(function(item) {
-        return (
-          <li key = {item.objectId}>
-            <span>{item.id}</span>
-            <span> {item.title}</span>
-            
-          </li>
-        );
-        }) }
-          </ul>
+          return (
+            <li key = {item.objectId}>
+              <span>{item.id}</span>
+              <span> {item.title}</span>
+              
+            </li>
+          );}) 
+        }
+      </ul>
     </header>
   );
 }
