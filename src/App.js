@@ -14,17 +14,24 @@ function App() {
       <ul>
         {todoList.map(function(item) {
           return (
+          
+    
             <li key = {item.objectId}>
+              <label>
+              <input type="checkbox" />
+             
+            </label>
               <span>{item.id}</span>
               <span> {item.title}</span>
               
             </li>
-          );}) 
+            );}) 
         }
       </ul>
     </header>
+    
   );
-}
+};
 
 export default App;
 
