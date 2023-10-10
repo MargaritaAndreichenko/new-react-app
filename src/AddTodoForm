@@ -1,0 +1,17 @@
+import React from 'react';
+
+
+function AddTodoForm(){
+    return(
+        <form>
+
+            <label>Title</label>
+            <input type = "text" id = "todoTitle"/>
+        </form>
+
+    )
+
+    }
+    
+    
+export default AddTodoForm;
