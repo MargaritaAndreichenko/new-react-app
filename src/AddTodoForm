@@ -3,15 +3,24 @@ import React from 'react';
 
 function AddTodoForm(){
     return(
-        <form>
+        <div>
+            <form>
+                <label htmlFor="todoTitle">Title</label>
+                <input type = "text" id = "todoTitle"/>
+                <input type="submit" value="Add"></input>
 
-            <label>Title</label>
-            <input type = "text" id = "todoTitle"/>
-        </form>
 
-    )
-
-    }
+            </form>
+            <form>
+                <label>
+                    Name:
+                    <input type="text" name="name" />
+                </label>
+                <input type="submit" value="Submit" />
+            </form>
+        </div>
+    );
+ };
     
     
 export default AddTodoForm;
