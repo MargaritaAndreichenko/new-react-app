@@ -9,7 +9,16 @@ function App() {
       <h1>TODO List</h1>
 
       <TodoList/>
-      <AddTodoForm/>
+
+      <div>
+            <form>
+                <label htmlFor="todoTitle">Title</label>
+                <input type = "text" id = "todoTitle"/>
+                <input type="submit" value="Add"></input>
+            </form>
+            
+        </div>
+     
 
     </header>
     
