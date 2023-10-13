@@ -1,6 +1,8 @@
 import React from 'react';
 import TodoList from './TodoList';
 import AddTodoForm from './AddTodoForm';
+import TodoListItem from './TodoListItem'
+
 
 
 function App() {
@@ -9,16 +11,7 @@ function App() {
       <h1>TODO List</h1>
 
       <TodoList/>
-
-      <div>
-            <form>
-                <label htmlFor="todoTitle">Title</label>
-                <input type = "text" id = "todoTitle"/>
-                <input type="submit" value="Add"></input>
-            </form>
-            
-        </div>
-     
+      <AddTodoForm/>
 
     </header>
     
