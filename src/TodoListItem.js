@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 
 const TodoListItem = (props) => 
@@ -6,7 +6,7 @@ const TodoListItem = (props) =>
     <li>
 
         <label>
-        <input type="checkbox" />
+        <input type="checkbox" label="todo_checkBox" />
                 
         </label>
         <span>{props.item.id}</span>
