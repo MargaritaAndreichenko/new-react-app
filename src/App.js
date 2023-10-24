@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TodoList from './TodoList';
 import AddTodoForm from './AddTodoForm';
 
@@ -13,7 +13,7 @@ const App = () =>  {
   
   ];
 
-  const [newTodo, setNewTodo] = React.useState('')
+  const [newTodo, setNewTodo] = useState('');
 
 
   return(

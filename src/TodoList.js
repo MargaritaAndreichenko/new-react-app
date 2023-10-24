@@ -3,13 +3,13 @@ import TodoListItem from './TodoListItem';
 
 
 
-const TodoList = (props) => 
+const TodoList = (props) => (
 
         <ul>        
-            {props.todoList.map((item) =>         
+            {props.todoList.map((item) => (        
                     <TodoListItem key = {item.id} item = {item} />
-                )
+                ))
             }
-        </ul>   
+        </ul>   )
 
 export default TodoList;
