@@ -1,29 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TodoList from './TodoList';
 import AddTodoForm from './AddTodoForm';
 
 
-function App() {
-  return (
+
+const App = () =>  {
+  
+  const todoList = [
+    {id: 1, title: 'Wake up'},
+    {id: 2, title: 'Cofee first'},
+    {id: 3, title: 'Code'},
+  
+  ];
+
+  const [newTodo, setNewTodo] = useState('');
+
+
+  return(
+     
     <header>
       <h1>TODO List</h1>
-
-      <TodoList/>
-
-      <div>
-            <form>
-                <label htmlFor="todoTitle">Title</label>
-                <input type = "text" id = "todoTitle"/>
-                <input type="submit" value="Add"></input>
-            </form>
-            
-        </div>
-     
+      
+      <TodoList todoList = {todoList}/>
+      <AddTodoForm onAddTodo = {setNewTodo}/>
+      
+    <p> You Entered <strong>{newTodo}</strong></p>
 
     </header>
     
   );
-};
+  };
 
 export default App;
 
