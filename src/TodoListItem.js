@@ -1,17 +1,17 @@
 import React from 'react';
 
 
-const TodoListItem = (props) => 
+const TodoListItem = ({item}) => 
 
     <li>
 
         <label>
-        <input type="checkbox" label="todo_checkBox" />
+        <input type="checkbox" label="todo_checkBox" name={item.id}/>
                 
         </label>
-        <span>{props.item.id}</span>
+        <span>{item.id}</span>
         <span> </span>
-        <span>{props.item.title}</span>               
+        <span>{item.title}</span>               
     </li>
     
 

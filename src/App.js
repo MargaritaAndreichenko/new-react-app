@@ -4,16 +4,13 @@ import AddTodoForm from './AddTodoForm';
 
 
 
-const App = () =>  {
-  
-  const todoList = [
-    {id: 1, title: 'Wake up'},
-    {id: 2, title: 'Cofee first'},
-    {id: 3, title: 'Code'},
-  
-  ];
+const App = () =>  { 
 
-  const [newTodo, setNewTodo] = useState('');
+  const addTodo = (newTodo) =>
+    setTodoList(todoList => [...todoList, newTodo]);
+  
+
+  const [todoList, setTodoList] = useState([]);
 
 
   return(
@@ -22,9 +19,8 @@ const App = () =>  {
       <h1>TODO List</h1>
       
       <TodoList todoList = {todoList}/>
-      <AddTodoForm onAddTodo = {setNewTodo}/>
+      <AddTodoForm onAddTodo = {addTodo}/>
       
-    <p> You Entered <strong>{newTodo}</strong></p>
 
     </header>
     
