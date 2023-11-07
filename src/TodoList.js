@@ -5,7 +5,7 @@ import TodoListItem from './TodoListItem';
 
 const TodoList = ({todoList}) => (
       
-        <ul>        
+        <ul>         
             {todoList.map(item =>        
                     <TodoListItem key = {item.id} item = {item} />
                     )

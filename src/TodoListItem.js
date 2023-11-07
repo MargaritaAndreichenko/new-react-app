@@ -1,19 +1,34 @@
 import React from 'react';
 
 
-const TodoListItem = ({item}) => 
+const TodoListItem = ({item}) => {
 
-    <li>
+    const [checked, setChecked] = React.useState(false);
 
-        <label>
-        <input type="checkbox" label="todo_checkBox" name= "item.id"/>
-                
-        </label>
-       
-        <span> </span>
-        <span>{item.title}</span>               
-    </li>
-    
+    const handleChange = () => {
+        setChecked(!checked);
+    };
+
+    return (
+    <div>
+        <Checkbox
+        label={item.title}
+        value={checked}
+        onChange={handleChange}
+        />
+
+    </div>
+    );
+    };
+
+    const Checkbox = ({ label, value, onChange }) => {
+    return (
+    <label>
+        <input type="checkbox" checked={value} onChange={onChange} />
+        {label}
+    </label>
+    );
+    };
 
 
 export default TodoListItem;
