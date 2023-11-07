@@ -15,7 +15,7 @@ const useSemiPersistentState = (key, initialState) => {
 
 const App = () =>  { 
 
-  const [todoList, setTodoList] = useSemiPersistentState('savedTodoList','React');
+  const [todoList, setTodoList] = useSemiPersistentState('savedTodoList','[]');
 
   const addTodo = (newTodo) =>
     setTodoList(todoList => [...todoList, newTodo]);
