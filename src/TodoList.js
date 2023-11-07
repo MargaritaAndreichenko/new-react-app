@@ -6,12 +6,11 @@ import TodoListItem from './TodoListItem';
 const TodoList = ({todoList}) => (
       
         <ul>        
-            {todoList.map((item) => (        
+            {todoList.map(item =>        
                     <TodoListItem key = {item.id} item = {item} />
-                ))
+                    )
             }
-        </ul>   )
+        </ul>   );
 
     
-
 export default TodoList;
