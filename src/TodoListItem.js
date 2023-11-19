@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const TodoListItem = ({item}) => {
+const TodoListItem = ({ item, onRemoveTodo }) => {
 
     const [checked, setChecked] = React.useState(false);
 
@@ -10,25 +10,25 @@ const TodoListItem = ({item}) => {
     };
 
     return (
-    <div>
-        <Checkbox
-        label={item.title}
-        value={checked}
-        onChange={handleChange}
-        />
-
-    </div>
+        <div>
+            <Checkbox
+                label={item.title}
+                value={checked}
+                onChange={handleChange}
+            />
+            &nbsp;
+            <button onClick={() => onRemoveTodo(item.id)}>Remove</button>
+        </div>
     );
-    };
+};
 
-    const Checkbox = ({ label, value, onChange }) => {
+const Checkbox = ({ label, value, onChange }) => {
     return (
-    <label>
-        <input type="checkbox" checked={value} onChange={onChange} />
-        {label}
-    </label>
+        <label>
+            <input type="checkbox" checked={value} onChange={onChange} />
+            {label}
+        </label>
     );
-    };
-
+};
 
 export default TodoListItem;
