@@ -5,30 +5,58 @@ import AddTodoForm from './AddTodoForm';
 
 const App = () => {
 
-const [todoList, setTodoList] = useState([]);
-const [isLoading, setIsLoading] = useState(true);
-const [isError, setIsError] = useState(false);
+  const [todoList, setTodoList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
 
-useEffect(() => {
-  new Promise(resolve => {
-      setTimeout(() => {
-          resolve({ data: { todoList: JSON.parse(localStorage.getItem("todoList")) || [] } });}, 2000);
-  }).then(result => {
-      setTodoList(result.data.todoList);
-      setIsLoading(false);
-  }).catch(() => setIsError(true));
-}, []);
+  const fetchData = async () => {
+    const options = {};
 
-useEffect(() => {
-  if (!isLoading) {
-    localStorage.setItem("todoList", JSON.stringify(todoList));}
-  }, [isLoading,todoList]);
+    options.method = 'GET';
+    options.headers = { Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_TOKEN}` };
+
+    const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}`;
+
+    try {
+      const response = await fetch(url, options);
+
+      if (!response.ok) {
+        const message = `Error: ${response.status}`;
+        throw new Error(message);
+      }
+      const data = await response.json();
+      console.log(data);
+      const todos = data.records.map((todo) => {
+        const newTodo = {
+          id: todo.id,
+          title: todo.fields.Title
+        }
+        return newTodo
+      });
+      setTodoList(todos);
+
+    } catch (error) {
+      console.log(error.message);
+
+    }
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []
+  );
+
+  useEffect(() => {
+    if (!isLoading) {
+      localStorage.setItem("todoList", JSON.stringify(todoList));
+    }
+  }, [isLoading, todoList]);
 
   const removeTodo = (id) => {
     const updatedTodoList = todoList.filter((item) => item.id !== id);
     setTodoList(updatedTodoList);
-  }; 
+  };
 
   const addTodo = (newTodo) =>
     setTodoList(todoList => [...todoList, newTodo]);
@@ -36,10 +64,10 @@ useEffect(() => {
   return (
     <header>
       <h1>TODO List</h1>
-      {isError && <p>Something went wrong ...</p>}
 
-      {isLoading ? <p>Loading...</p> : 
-      <TodoList todoList={todoList} onRemoveTodo={removeTodo} />}
+
+      {isLoading ? <p>Loading...</p> :
+        <TodoList todoList={todoList} onRemoveTodo={removeTodo} />}
       <AddTodoForm onAddTodo={addTodo} />
     </header>
   );
