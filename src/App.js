@@ -47,6 +47,42 @@ const App = () => {
   }, []
   );
 
+
+  const postTodo = async (title) => {
+    try {
+      const airtableRecord = {
+        fields: {
+          title: title,
+        },
+      };
+
+      const response = await fetch(
+        `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_TOKEN}`
+          },
+          body: JSON.stringify(airtableRecord)
+        }
+      );
+
+      if (!response.ok) {
+        const message = `Error has ocurred:
+                               ${response.status}`;
+        throw new Error(message);
+      }
+
+      const dataResponse = await response.json();
+      return dataResponse;
+    } catch (error) {
+      console.log(error.message);
+      return null;
+    }
+  };
+
+
   useEffect(() => {
     if (!isLoading) {
       localStorage.setItem("todoList", JSON.stringify(todoList));
@@ -58,9 +94,10 @@ const App = () => {
     setTodoList(updatedTodoList);
   };
 
-  const addTodo = (newTodo) =>
-    setTodoList(todoList => [...todoList, newTodo]);
-
+  const addTodo = (newTodo) =>{
+    postTodo(newTodo)
+  setTodoList(todoList => [...todoList, newTodo]);
+  };
   return (
     <header>
       <h1>TODO List</h1>
