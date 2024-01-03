@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import TodoList from './TodoList';
 import AddTodoForm from './AddTodoForm';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
 const App = () => {
@@ -9,7 +10,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
 
-  const fetchData = async () => {
+  const fetchApi = async () => {
     const options = {};
 
     options.method = 'GET';
@@ -26,88 +27,92 @@ const App = () => {
       }
       const data = await response.json();
       console.log(data);
-      const todos = data.records.map((todo) => {
-        const newTodo = {
-          id: todo.id,
-          title: todo.fields.Title
-        }
-        return newTodo
-      });
+      const todos = data.records.map((todo) => ({
+
+        id: todo.id,
+        title: todo.fields.Title
+      }));
+
       setTodoList(todos);
-
+      setIsLoading(false);
     } catch (error) {
-      console.log(error.message);
-
+      console.log(error);
     }
-    setIsLoading(false);
   };
+  console.log("Fetch GET1")
+
 
   useEffect(() => {
-    fetchData();
+    fetchApi();
   }, []
   );
 
 
-  const postTodo = async (title) => {
+
+  const addTodo = async (newTodo) => {
     try {
-      const airtableRecord = {
+      const airtableData = {
         fields: {
-          title: title,
-        },
+          title: newTodo,
+        }
       };
 
-      const response = await fetch(
-        `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`,
+      const response = await fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_TOKEN}`
           },
-          body: JSON.stringify(airtableRecord)
+          body: JSON.stringify(airtableData),
         }
       );
 
       if (!response.ok) {
         const message = `Error has ocurred:
-                               ${response.status}`;
+      ${response.status}`;
         throw new Error(message);
       }
 
       const dataResponse = await response.json();
       return dataResponse;
-    } catch (error) {
+    } 
+      catch (error) {
       console.log(error.message);
       return null;
-    }
+    };
   };
 
 
-  useEffect(() => {
-    if (!isLoading) {
-      localStorage.setItem("todoList", JSON.stringify(todoList));
-    }
-  }, [isLoading, todoList]);
-
-  const removeTodo = (id) => {
-    const updatedTodoList = todoList.filter((item) => item.id !== id);
-    setTodoList(updatedTodoList);
-  };
-
-  const addTodo = (newTodo) =>{
-    postTodo(newTodo)
-  setTodoList(todoList => [...todoList, newTodo]);
-  };
-  return (
-    <header>
-      <h1>TODO List</h1>
+console.log("Fetch POST")
 
 
-      {isLoading ? <p>Loading...</p> :
-        <TodoList todoList={todoList} onRemoveTodo={removeTodo} />}
-      <AddTodoForm onAddTodo={addTodo} />
-    </header>
-  );
+const removeTodo = (id) => {
+  const newTodoList = todoList.filter((todo) => todo.id !== id);
+  setTodoList(newTodoList);
+};
+console.log(" Remove")
+
+
+return (
+  <BrowserRouter>
+
+    <Routes>
+      <Route path="/" element={
+        <>
+          <header>
+            <h1>TODO List</h1>
+            {isLoading ? <p>Loading...</p> :
+              <TodoList todoList={todoList} onRemoveTodo={removeTodo} />}
+            <AddTodoForm onAddTodo={addTodo} />
+          </header>
+        </>
+      } />;
+      <Route path="/new" element=
+      {<h1>New Todo List</h1>} />
+    </Routes>
+  </BrowserRouter>
+);
 };
 
 export default App;
