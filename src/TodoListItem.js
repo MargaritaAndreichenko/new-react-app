@@ -1,13 +1,13 @@
 import React from 'react';
 
 
-const TodoListItem = ({ item, onRemoveTodo }) => {
+const TodoListItem = ({item, onRemoveTodo }) => {
 
     const [checked, setChecked] = React.useState(false);
 
     const handleChange = () => {
         setChecked(!checked);
-        
+
     };
 
     return (
