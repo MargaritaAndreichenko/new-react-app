@@ -7,6 +7,7 @@ const TodoListItem = ({ item, onRemoveTodo }) => {
 
     const handleChange = () => {
         setChecked(!checked);
+        
     };
 
     return (
