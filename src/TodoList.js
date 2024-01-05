@@ -4,6 +4,7 @@ import TodoListItem from './TodoListItem';
 
 
 const TodoList = ({ todoList, onRemoveTodo }) => {
+  console.log(todoList)
   return (
     <ul>
       {todoList.map(item =>
