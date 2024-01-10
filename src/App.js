@@ -26,7 +26,6 @@ const App = () => {
         throw new Error(message);
       }
       const data = await response.json();
-      console.log(data);
       const todos = data.records.map((todo) => ({
 
         id: todo.id,
@@ -39,15 +38,11 @@ const App = () => {
       console.log(error);
     }
   };
-  console.log("Fetch GET1")
-
 
   useEffect(() => {
     fetchData();
   }, []
   );
-
-
 
   const addTodo = async (newTodo) => {
 
@@ -75,7 +70,6 @@ const App = () => {
       }
 
       const dataResponse = await response.json();
-      console.log(dataResponse);
       fetchData();
       return dataResponse;
     }
@@ -86,11 +80,7 @@ const App = () => {
   };
 
 
-  console.log("Fetch POST")
-
-
   const removeTodo = async (id) => {
-    console.log(id)
     try {
 
       const response = await fetch(`https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}/${id}`,
@@ -109,7 +99,6 @@ const App = () => {
         throw new Error(message);
       }
       const dataResponse = await response.json();
-      console.log(dataResponse);
       fetchData();
       return dataResponse;
     }
@@ -119,7 +108,6 @@ const App = () => {
     };
 
   };
-  console.log(" Remove")
 
 
   return (
