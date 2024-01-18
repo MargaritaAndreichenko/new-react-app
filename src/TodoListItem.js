@@ -1,7 +1,9 @@
 
 import React, { useState } from 'react';
-import style from './TodoListItem.module.css';
-
+//import styles from './TodoListItem.module.css';
+import style from './App.module.css';
+import pic from './trash.png';
+import size from './AddTodoFrom.module.css';
 
 
 const TodoListItem = ({item, onRemoveTodo }) => {
@@ -14,7 +16,8 @@ const TodoListItem = ({item, onRemoveTodo }) => {
     };
 
     return (
-        <li className={style.ListItem}>
+        <div >
+        <ol className={style.Link}>
         
             <Checkbox
                 label={item.title}
@@ -22,9 +25,10 @@ const TodoListItem = ({item, onRemoveTodo }) => {
                 onChange={handleChange}
             />
             &nbsp;
-            <button onClick={() => onRemoveTodo(item.id) }>Remove</button>
+            <button onClick={() => onRemoveTodo(item.id) }  ><img src={pic} alt="remove..." className={size.img} /></button>
         
-        </li>
+        </ol>
+        </div>
     );
 };
 
