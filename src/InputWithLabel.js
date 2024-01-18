@@ -20,9 +20,9 @@ const InputWithLabel = ({
 
     return (
         <>
-           <label htmlFor={id}>{children}</label>
+           <label htmlFor={id}  >{children}</label>
             &nbsp;
-            <input ref={inputRef} id={id} type={type} value={value} onChange={onChange} />
+            <input ref={inputRef} id={id} type={type} value={value} onChange={onChange}  />
         </>
     );
 };

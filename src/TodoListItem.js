@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import style from './TodoListItem.module.css';
 
 
 
@@ -13,15 +14,17 @@ const TodoListItem = ({item, onRemoveTodo }) => {
     };
 
     return (
-        <div>
+        <li className={style.ListItem}>
+        
             <Checkbox
                 label={item.title}
                 value={checked}
                 onChange={handleChange}
             />
             &nbsp;
-            <button onClick={() => onRemoveTodo(item.id)}>Remove</button>
-        </div>
+            <button onClick={() => onRemoveTodo(item.id) }>Remove</button>
+        
+        </li>
     );
 };
 
