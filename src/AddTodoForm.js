@@ -3,6 +3,7 @@ import InputWithLabel from './InputWithLabel';
 //import styles from './TodoListItem.module.css';
 import style from './App.module.css'
 import icon from './plus.gif';
+
 import size from './AddTodoFrom.module.css'
 //import styles from './TodoListItem.module.css';
 
@@ -23,8 +24,8 @@ const AddTodoForm = ({ onAddTodo }) => {
     };
     return (
         <div>
-            <form onSubmit={handleAddTodo} className={style.Link}>
-                <InputWithLabel
+            <form onSubmit={handleAddTodo} className={style.Link} >
+                <InputWithLabel 
                    
                     id="todoTitle"
                     value={todoTitle}
@@ -33,7 +34,7 @@ const AddTodoForm = ({ onAddTodo }) => {
                 >
                     <strong>Title</strong>
                 </InputWithLabel>
-                <button type="submit"  ><img src={icon} alt="plus..."  className={size.img}/></button>
+                <button type="submit"> <img src={icon} alt="plus..." className={size.img} /></button>
             </form>
         </div>
     );

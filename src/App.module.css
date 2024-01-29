@@ -3,10 +3,9 @@
 .Link 
   
   {
+    
     border-radius: 100px;
     text-align: center;
-
-    
     justify-content: center;
    
     font-family: 'Satisfy', cursive;
@@ -47,8 +46,9 @@
       } 
 
 .SmallerLink{
+  
   font-family: 'Satisfy', cursive;
   font-size: smaller;
-
+  
 }
 
