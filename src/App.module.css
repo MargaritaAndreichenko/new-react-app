@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
+.Link 
+  
+  {
+    
+    border-radius: 100px;
+    text-align: center;
+    justify-content: center;
+   
+    font-family: 'Satisfy', cursive;
+    font-size: larger;
+    text-decoration: none;
+    color: #051227;
+  }
+
+  nav {
+      
+        display: flex; 
+        justify-content: space-between; 
+        padding: 1rem 2rem; 
+    }
+    
+    nav ul {
+        
+        display: flex; 
+        list-style: none; 
+    }
+    
+    nav li {
+      
+        text-decoration: none;
+        padding-left: 1rem; 
+    }
+    @media only screen and (max-width: 600px) {
+        nav {
+          flex-direction: column;
+        }
+        nav ul {
+          flex-direction: column;
+          padding-top: 0.5rem;
+        }
+        nav li {
+          padding: 0.5rem 0;
+        }
+      } 
+
+.SmallerLink{
+  
+  font-family: 'Satisfy', cursive;
+  font-size: smaller;
+  
+}
+

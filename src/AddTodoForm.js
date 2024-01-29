@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
 import InputWithLabel from './InputWithLabel';
+//import styles from './TodoListItem.module.css';
+import style from './App.module.css'
+import icon from './plus.gif';
+
+import size from './AddTodoFrom.module.css'
+//import styles from './TodoListItem.module.css';
+
 
 const AddTodoForm = ({ onAddTodo }) => {
 
@@ -17,8 +24,9 @@ const AddTodoForm = ({ onAddTodo }) => {
     };
     return (
         <div>
-            <form onSubmit={handleAddTodo}>
-                <InputWithLabel
+            <form onSubmit={handleAddTodo} className={style.Link} >
+                <InputWithLabel 
+                   
                     id="todoTitle"
                     value={todoTitle}
                     onChange={handleTitleChange}
@@ -26,7 +34,7 @@ const AddTodoForm = ({ onAddTodo }) => {
                 >
                     <strong>Title</strong>
                 </InputWithLabel>
-                <button type="submit" >Add new todo</button>
+                <button type="submit"> <img src={icon} alt="plus..." className={size.img} /></button>
             </form>
         </div>
     );
