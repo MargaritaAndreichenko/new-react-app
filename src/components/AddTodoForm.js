@@ -43,7 +43,6 @@ const AddTodoForm = ({ onAddTodo }) => {
 
 
 AddTodoForm.propTypes = {
-    
         onAddTodo: PropTypes.func
 }
 
