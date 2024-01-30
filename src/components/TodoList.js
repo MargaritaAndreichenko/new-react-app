@@ -1,7 +1,7 @@
 import React from 'react';
 import TodoListItem from './TodoListItem';
-import style from './App.module.css';
-
+import style from '../css/App.module.css';
+import PropTypes from 'prop-types';
 
 
 const TodoList = React.memo(({ todoList, onRemoveTodo, onToggleCompletion, onUpdateNewTitle,}) => {
@@ -19,4 +19,11 @@ const TodoList = React.memo(({ todoList, onRemoveTodo, onToggleCompletion, onUpd
    
  );
 });
+
+TodoList.propTypes = {
+  todoList: PropTypes.array,
+  onRemoveTodo: PropTypes.func, 
+  onToggleCompletion: PropTypes.func, 
+  onUpdateNewTitle: PropTypes.func
+}
 export default TodoList;

@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import InputWithLabel from './InputWithLabel';
-//import styles from './TodoListItem.module.css';
-import style from './App.module.css'
-import icon from './plus.gif';
+import InputWithLabel from './InputWithLabel.js';
+import style from '../css/App.module.css'
+import icon from '../images/plus.gif';
+import size from '../css/AddTodoFrom.module.css'
+import PropTypes from 'prop-types';
 
-import size from './AddTodoFrom.module.css'
-//import styles from './TodoListItem.module.css';
 
 
 const AddTodoForm = ({ onAddTodo }) => {
+       
 
     const [todoTitle, setTodoTitle] = useState('');
 
@@ -16,6 +16,7 @@ const AddTodoForm = ({ onAddTodo }) => {
         const newTodoTitle = event.target.value;
         setTodoTitle(newTodoTitle);
     };
+
 
     const handleAddTodo = (event) => {
         event.preventDefault();
@@ -39,5 +40,11 @@ const AddTodoForm = ({ onAddTodo }) => {
         </div>
     );
 };
+
+
+AddTodoForm.propTypes = {
+    
+        onAddTodo: PropTypes.func
+}
 
 export default AddTodoForm;

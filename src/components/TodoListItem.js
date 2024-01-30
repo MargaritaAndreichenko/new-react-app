@@ -1,12 +1,10 @@
 
 import React, { useState } from 'react';
-//import styles from './TodoListItem.module.css';
-import style from './App.module.css';
-//import pic from './trash.png';
-import size from './AddTodoFrom.module.css';
-
-import { ReactComponent as RemoveButton } from "./remove-circle-svgrepo-com.svg";
-import { ReactComponent as EditButton } from "./edit-button-svgrepo-com.svg";
+import style from '../css/App.module.css';
+import size from '../css/AddTodoFrom.module.css';
+import { ReactComponent as RemoveButton } from "../images/remove-circle-svgrepo-com.svg";
+import { ReactComponent as EditButton } from "../images/edit-button-svgrepo-com.svg";
+import PropTypes from 'prop-types';
 
  const TodoListItem = ({item, onRemoveTodo, onUpdateNewTitle, }) => {
     //onToggleCompletion
@@ -71,6 +69,12 @@ const Checkbox = ({ label, value, onChange }) => {
         </label>
     );
 };
+
+TodoListItem.propTypes = {
+    item: PropTypes.object,
+    onRemoveTodo: PropTypes.func, 
+    onUpdateNewTitle: PropTypes.func
+  }
 
 export default TodoListItem;
 
