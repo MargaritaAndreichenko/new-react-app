@@ -14,8 +14,6 @@ const TodoList = React.memo(({ todoList, onRemoveTodo, onToggleCompletion, onUpd
       )
       }
     </ul>
- 
-   
    
  );
 });

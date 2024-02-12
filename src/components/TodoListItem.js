@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import style from '../css/App.module.css';
 import size from '../css/AddTodoFrom.module.css';
 import { ReactComponent as RemoveButton } from "../images/remove-circle-svgrepo-com.svg";
@@ -7,10 +7,11 @@ import { ReactComponent as EditButton } from "../images/edit-button-svgrepo-com.
 import PropTypes from 'prop-types';
 
  const TodoListItem = ({item, onRemoveTodo, onUpdateNewTitle, }) => {
-    //onToggleCompletion
+    
     //const [checked, setChecked] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
     const [newTitle, setNewTitle] = useState(item.title);
+ 
 
     const handleChange = () => {
         console.log(item.checked)
@@ -29,23 +30,33 @@ import PropTypes from 'prop-types';
         onUpdateNewTitle(item.id, newTitle);
         setIsEditing(false);
     };
+    const inputRef = useRef();
+    useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  });
 
     return (
-        <div>
-            <ol className={style.Link}>
+           
+            <div className={style.Link}>
                 
                 {isEditing ? (
-                    <>
-                        <input type="text" value={newTitle} onChange={handleTitleChange} />
+                  <>
+                        <input type="text" ref={inputRef} value={newTitle} onChange={handleTitleChange} />
                         <button onClick={handleSaveClick}>Save</button>
-                    </>
+                        </>
                 ) : (
                     <>
-                        <Checkbox 
-                            label={item.title}
-                            value={item.checked}
-                            onChange={handleChange}
-                        />
+                    
+                    <label>
+                          <input
+                              type="checkbox"
+                              checked={item.checked} // Ensure you have access to item and its properties
+                              onChange={handleChange} // Make sure handleChange is defined in your component
+                          />
+                          {item.title} 
+                      </label>
                         &nbsp;
                         
                         <button onClick={() => onRemoveTodo(item.id)}>
@@ -54,21 +65,14 @@ import PropTypes from 'prop-types';
                         <button onClick={handleEditClick}>
                             <EditButton alt="edit..." />
                         </button>
+                        
                     </>
                 )}
-            </ol>
-        </div>
+            </div>
     );
 };
 
-const Checkbox = ({ label, value, onChange }) => {
-    return (
-        <label >
-            <input type="checkbox" checked={value} onChange={onChange} />
-            {label}
-        </label>
-    );
-};
+
 
 TodoListItem.propTypes = {
     item: PropTypes.object,
