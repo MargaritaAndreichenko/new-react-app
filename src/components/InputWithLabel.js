@@ -9,8 +9,7 @@ const InputWithLabel = ({
     onChange,
     children,
     isFocused,
-
-}) => {
+    }) => {
     const inputRef = useRef();
 
     useEffect(() => {
