@@ -11,17 +11,23 @@ import TodoContainer from './components/TodoContainer.js';
 const TableChooser = () => {
   const [tableName, setTableName] = useState(process.env.REACT_APP_TABLE_NAME);
   return (
-    <div>
-      <select
+    // 
+      <div>
+        <h1  style={{textAlign: "center",}}>
+      <select className={style.Link}
         id="selectField"
         value={tableName}
         onChange={(event) => setTableName(event.target.value)}
       >
-        <option value={process.env.REACT_APP_TABLE_NAME}>Todo List</option>
-        <option value="List2">List 2</option>
+        <option value={process.env.REACT_APP_TABLE_NAME}>Default</option>
+        <option value="List2">List2</option>
       </select>
+      </h1>
+      <br></br>
+
       <TodoContainer tableName={tableName} />
-    </div>
+      </div>
+    
   );
 };
 
@@ -38,8 +44,8 @@ const App = () => {
           </h1>
         </nav>
         <Routes >
-          <Route path="/" element={<><h1 className={style.Link}>TODO List</h1></>}/>;
-          <Route path="/new" element={<TableChooser />}/>
+          <Route path="/new" element={<><h1 className={style.Link}>TODO List</h1></>}/>;
+          <Route path="/" element={<TableChooser />}/>
         </Routes>
       </BrowserRouter>
     </div>

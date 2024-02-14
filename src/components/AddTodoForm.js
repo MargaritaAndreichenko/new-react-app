@@ -29,7 +29,7 @@ const AddTodoForm = ({ onAddTodo }) => {
                 <InputWithLabel 
                    
                     id="todoTitle"
-                    value={todoTitle}
+                    todoTitle={todoTitle}
                     onChange={handleTitleChange}
                     isFocused
                 >

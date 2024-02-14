@@ -6,7 +6,7 @@ import { ReactComponent as RemoveButton } from "../images/remove-circle-svgrepo-
 import { ReactComponent as EditButton } from "../images/edit-button-svgrepo-com.svg";
 import PropTypes from 'prop-types';
 
- const TodoListItem = ({item, onRemoveTodo, onUpdateNewTitle, }) => {
+const TodoListItem = ({item, onRemoveTodo, onUpdateNewTitle, }) => {
     
     //const [checked, setChecked] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
@@ -81,7 +81,3 @@ TodoListItem.propTypes = {
   }
 
 export default TodoListItem;
-
-
-
-
