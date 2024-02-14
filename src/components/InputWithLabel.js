@@ -1,28 +1,27 @@
 import React, { useEffect, useRef } from 'react';
-import style from  '../css/App.module.css';
+import style from  '../css/AllComponents.module.css';
 import PropTypes from 'prop-types';
 
 const InputWithLabel = ({
-    id,
-    value,
-    type = "text",
+  
+    todoTitle,
     onChange,
     children,
-    isFocused,
+
     }) => {
     const inputRef = useRef();
 
     useEffect(() => {
-        if (isFocused && inputRef.current) {
+       
             inputRef.current.focus();
-        }
-    }, [isFocused]);
+       
+    }, []);
 
     return (
         <>
-           <label htmlFor={id} >{children} </label>
+           <label htmlFor="todoTitle" >{children} </label>
             &nbsp;
-            <input ref={inputRef} id={id} type={type} value={value} onChange={onChange} className={style.Link} />
+            <input ref={inputRef} id="todoTitle" type="text" value={todoTitle} onChange={onChange} className={style.Link} />
         </>
     );
 };

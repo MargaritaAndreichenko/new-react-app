@@ -1,12 +1,12 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import style from '../css/App.module.css';
+import style from '../css/AllComponents.module.css';
 import size from '../css/AddTodoFrom.module.css';
 import { ReactComponent as RemoveButton } from "../images/remove-circle-svgrepo-com.svg";
 import { ReactComponent as EditButton } from "../images/edit-button-svgrepo-com.svg";
 import PropTypes from 'prop-types';
 
- const TodoListItem = ({item, onRemoveTodo, onUpdateNewTitle, }) => {
+const TodoListItem = ({item, onRemoveTodo, onUpdateNewTitle, }) => {
     
     //const [checked, setChecked] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
@@ -81,7 +81,3 @@ TodoListItem.propTypes = {
   }
 
 export default TodoListItem;
-
-
-
-

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import InputWithLabel from './InputWithLabel.js';
-import style from '../css/App.module.css'
+import style from '../css/AllComponents.module.css'
 import icon from '../images/plus.gif';
 import size from '../css/AddTodoFrom.module.css'
 import PropTypes from 'prop-types';
@@ -29,7 +29,7 @@ const AddTodoForm = ({ onAddTodo }) => {
                 <InputWithLabel 
                    
                     id="todoTitle"
-                    value={todoTitle}
+                    todoTitle={todoTitle}
                     onChange={handleTitleChange}
                     isFocused
                 >
