@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import TodoList from './TodoList';
-import AddTodoForm from './AddTodoForm';
+import TodoList from './components/TodoList';
+import AddTodoForm from './components/AddTodoForm';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import style from './App.module.css';
-//import styles from './TodoListItem.module.css';
+import style from './css/App.module.css'
 
 //const sortByLastModifiedTime ="?sort[0][field]=completed&sort[0][direction]=asc&sort[1][field]=lastModifiedTime&sort[1][direction]=asc";
 
