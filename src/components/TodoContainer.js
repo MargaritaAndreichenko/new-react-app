@@ -3,7 +3,7 @@ import TodoList from './TodoList';
 import AddTodoForm from './AddTodoForm';
 import PropTypes from 'prop-types';
 
-const TodoContainer = ({tableName}) => {
+const TodoContainer = ({ tableName }) => {
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -138,7 +138,10 @@ const TodoContainer = ({tableName}) => {
     <div>
       <AddTodoForm onAddTodo={addTodo} />
       {isLoading ? (<p>Loading...</p>) :
-        (<TodoList todoList={todoList} onRemoveTodo={removeTodo} onUpdateNewTitle={updateNewTitle} onToggleCompletion={toggleTodoCompletion} />
+        (<TodoList todoList={todoList} 
+          onRemoveTodo={removeTodo} 
+          onUpdateNewTitle={updateNewTitle} 
+          onToggleCompletion={toggleTodoCompletion} />
 
         )}
     </div>
