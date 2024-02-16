@@ -14,7 +14,7 @@ const TableChooser = () => {
     // 
       <div>
         <h1  style={{textAlign: "center",}}>
-      <select className={style.Link}
+      <select className={style.SmallerLink}
         id="selectField"
         value={tableName}
         onChange={(event) => setTableName(event.target.value)}
