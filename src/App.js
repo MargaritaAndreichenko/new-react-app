@@ -1,35 +1,35 @@
 import React, { useState } from 'react';
-//import TodoList from './components/TodoList';
-//import AddTodoForm from './components/AddTodoForm';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import style from './css/AllComponents.module.css'
-//import PropTypes from "prop-types";
 import TodoContainer from './components/TodoContainer.js';
-
-//const sortByLastModifiedTime ="?sort[0][field]=completed&sort[0][direction]=asc&sort[1][field]=lastModifiedTime&sort[1][direction]=asc";
 
 const TableChooser = () => {
   const [tableName, setTableName] = useState(process.env.REACT_APP_TABLE_NAME);
-  return (
-    // 
-      <div>
-        <h1  style={{textAlign: "center",}}>
-      <select className={style.SmallerLink}
-        id="selectField"
-        value={tableName}
-        onChange={(event) => setTableName(event.target.value)}
-      >
-        <option value={process.env.REACT_APP_TABLE_NAME}>Default</option>
-        <option value="List2">List2</option>
-      </select>
-      </h1>
-      <br></br>
+  const handleSetTableName = (newTableName) => {setTableName(newTableName);};
 
-      <TodoContainer tableName={tableName} />
+  return (
+      <div style={{ textAlign: "center" }}>
+        
+          {/* Buttons for selecting the table */}
+          <button
+            className={style.Link}
+            onClick={() => handleSetTableName(process.env.REACT_APP_TABLE_NAME)}
+          >
+            To-Do List
+          </button>
+         <>  </>
+          <button
+            className={style.Link}
+            onClick={() => handleSetTableName("List2")}
+          >
+            Shopping List
+          </button>
+       
+        <br />
+        <TodoContainer tableName={tableName} />
       </div>
-    
-  );
-};
+    );
+  };
 
 const App = () => {
   return (
@@ -37,15 +37,19 @@ const App = () => {
       <BrowserRouter >
         <nav >
           <h1>
-          <ul >
-            <ol><Link to="/"className={style.Link} >Home</Link></ol>
-            <ol><Link to="/new" className={style.Link}>New Todo</Link></ol>
-          </ul>
+            <ul >
+              <ol></ol>
+              <ol><Link to="/" className={style.Link} >Home</Link></ol>
+            </ul>
           </h1>
         </nav>
         <Routes >
-          <Route path="/new" element={<><h1 className={style.Link}>TODO List</h1></>}/>;
-          <Route path="/" element={<TableChooser />}/>
+          <Route path="/" element={<><h1 className={style.Link} style= { {fontSize:"40px"}}>
+          Welcome to the Todo List Manager! 
+          <h2>           </h2>   <br></br>
+          <Link to="/new" className={style.Link} style= { {fontSize:"30px"}}>Go to My lists</Link></h1><br></br> 
+          </>} />;
+          <Route path="/new" element={<TableChooser />} />
         </Routes>
       </BrowserRouter>
     </div>

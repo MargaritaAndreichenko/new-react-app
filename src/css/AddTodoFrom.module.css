@@ -1,8 +1,12 @@
 .img{
     
-    width: 25px;
-       
+    width:25px;
+     
     }
 .label{
         text-align: left;
         }
+
+.anotherimg{
+    width:25px;
+}

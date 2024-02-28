@@ -14,7 +14,8 @@ const InputWithLabel = ({
 
     return (
         <>
-            <label htmlFor="todoTitle"  >{children} </label>
+            <label htmlFor="todoTitle" 
+          >{children} </label>
             <input ref={inputRef} 
                    id="todoTitle" type="text" 
                    value={todoTitle} 

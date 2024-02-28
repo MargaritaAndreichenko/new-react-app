@@ -6,7 +6,7 @@
   text-align: center;
   /* justify-content: center; */
 
-  font-family: 'Satisfy', cursive;
+  font-family: 'Satisfy';
   font-size: larger;
   text-decoration: none;
   color: #051227;
@@ -52,17 +52,12 @@ div {
   nav li {
     padding: 0.5rem 0;
   }
-
-
 }
 
 .SmallerLink {
-
   border-radius: 100px;
   text-align: center;
-  /* justify-content: center; */
-
-  font-family: 'Satisfy', cursive;
+  font-family: 'Satisfy';
   font-size: smaller;
   text-decoration: none;
   color: #051227;
@@ -101,3 +96,4 @@ nav li {
     padding: 0.5rem 0;
   }
 }
+
