@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import InputWithLabel from './InputWithLabel.js';
 import style from '../css/AllComponents.module.css'
-import icon from '../images/plus.gif';
-import size from '../css/AddTodoFrom.module.css'
+
 import PropTypes from 'prop-types';
 
 const AddTodoForm = ({ onAddTodo }) => {
@@ -14,7 +13,7 @@ const AddTodoForm = ({ onAddTodo }) => {
     const handleAddTodo = (event) => {
         event.preventDefault();
 
-        if (!todoTitle.trim().length) {
+        if (!todoTitle.trim()) {
             alert("Seems like you added  a task without title. Please, provide a title");
             return;
         }
@@ -29,9 +28,10 @@ const AddTodoForm = ({ onAddTodo }) => {
                     todoTitle={todoTitle}
                     onChange={handleTitleChange}
                 >
-                    <strong>Title</strong>
+                    <strong>Add an item</strong>
                 </InputWithLabel>
-                <button type="submit"> <img src={icon} alt="plus..." className={size.img} /></button>
+                <br></br>
+                
             </form>
             
         </div>
